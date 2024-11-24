@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 @Table(name = "postal_adresses")
 public class PostalAddress {
 
+    //this after bext 2 day
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

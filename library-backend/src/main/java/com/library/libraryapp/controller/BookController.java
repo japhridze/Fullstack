@@ -3,6 +3,7 @@ package com.library.libraryapp.controller;
 import com.library.libraryapp.dto.BookDTO;
 import com.library.libraryapp.entity.Book;
 import com.library.libraryapp.service.BookService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,8 +13,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/books")
+
 public class BookController {
-//wduwidw
+
     @Autowired
     private BookService bookService;
 
@@ -36,7 +38,6 @@ public class BookController {
         BookDTO saveBookDTO = bookService.addBook(bookDTO);
         return new ResponseEntity<>(saveBookDTO, HttpStatus.CREATED);
     }
-    //ewf
 
     @GetMapping("listAll")
     // URL: http://localhost:8080/api/books/listAll

@@ -4,6 +4,7 @@ import com.library.libraryapp.entity.Book;
 import com.library.libraryapp.mapper.BookMapper;
 import com.library.libraryapp.repository.BookRepository;
 import com.library.libraryapp.service.BookService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,14 +13,11 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
+@AllArgsConstructor
 public class BookServiceImpl implements BookService {
 
-    @Autowired
-    private BookRepository bookRepository;
 
-    public BookServiceImpl(BookRepository bookRepository) {
-        this.bookRepository = bookRepository;
-    }
+    private BookRepository bookRepository;
 
     @Override
     public BookDTO addBook(BookDTO bookDTO) {

@@ -13,16 +13,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/books")
-
+@AllArgsConstructor
 public class BookController {
 
-    @Autowired
+
     private BookService bookService;
 
-
-    public BookController(BookService bookService) {
-        this.bookService = bookService;
-    }
 
     /*
     CRUD = create, read, update, delete
@@ -46,5 +42,11 @@ public class BookController {
        return new ResponseEntity<>(allBooks, HttpStatus.OK);
     }
 
-//this2
+
+    @GetMapping("{id}")
+    //e.g URL: http://localhost:8080/api/books/1
+    public  ResponseEntity<BookDTO> getBookById(@PathVariable("id") Long bookId){
+      BookDTO bookDTO = bookService.getBookById(bookId);
+        return new ResponseEntity<>(bookDTO, HttpStatus.OK);
+    }
 }

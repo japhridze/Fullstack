@@ -23,5 +23,4 @@ public class BookDTO {
     private String barcodeNumber;
 
 
-    //this1
 }

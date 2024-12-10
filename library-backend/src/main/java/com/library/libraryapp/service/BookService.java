@@ -15,5 +15,8 @@ public interface BookService {
 
    BookDTO getBookById(long bookId);
 
+   BookDTO updateBook(BookDTO bookDTO);
+
+
 
  }

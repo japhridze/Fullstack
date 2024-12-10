@@ -45,4 +45,47 @@ public class BookServiceImpl implements BookService {
         Book book = optionalBook.get();
         return BookMapper.mapToBookDTO(book);
     }
+
+    @Override
+    public BookDTO updateBook(BookDTO bookDTO) {
+        //1. find existing book by id
+        Optional<Book> bookOptional = bookRepository.findById(bookDTO.getId());
+
+        //2. do partial update of the book (we will update on non-null fields)
+        Book bookToUpdate = bookOptional.get();
+        updateBookEntityFromDTO(bookToUpdate, bookDTO);
+
+        //3. save updated book to database
+
+        //4. return bookDTO using mapper
+
+        return null;
+    }
+
+    private void updateBookEntityFromDTO(Book book, BookDTO bookDTO) {
+        if (bookDTO.getTitle() !=null){
+            book.setTitle(bookDTO.getTitle());
+        }
+        if (bookDTO.getAuthor() !=null){
+            book.setAuthor(bookDTO.getAuthor());
+        }
+        if (bookDTO.getIsbn() !=null){
+            book.setIsbn(bookDTO.getIsbn());
+        }
+        if (bookDTO.getPublisher() !=null){
+            book.setPublisher(bookDTO.getPublisher());
+        }
+        if (bookDTO.getYearOfPublication() !=null){
+            book.setYearOfPublication(bookDTO.getYearOfPublication());
+        }
+        if (bookDTO.getPlaceOfPublication() !=null){
+            book.setPlaceOfPublication(bookDTO.getPlaceOfPublication());
+        }
+        if (bookDTO.getNoOfAvailableCopies()!=null){
+            book.setNoOfAvailableCopies(bookDTO.getNoOfAvailableCopies());
+        }
+        if (bookDTO.getBarcodeNumber() !=null){
+            book.setBarcodeNumber(bookDTO.getBarcodeNumber());
+        }
+    }
 }

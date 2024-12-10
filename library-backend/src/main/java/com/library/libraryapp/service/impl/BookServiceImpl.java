@@ -56,10 +56,12 @@ public class BookServiceImpl implements BookService {
         updateBookEntityFromDTO(bookToUpdate, bookDTO);
 
         //3. save updated book to database
+        Book savedBook = bookRepository.save(bookToUpdate);
+
 
         //4. return bookDTO using mapper
 
-        return null;
+        return BookMapper.mapToBookDTO(savedBook);
     }
 
     private void updateBookEntityFromDTO(Book book, BookDTO bookDTO) {

@@ -49,4 +49,11 @@ public class BookController {
       BookDTO bookDTO = bookService.getBookById(bookId);
         return new ResponseEntity<>(bookDTO, HttpStatus.OK);
     }
+    @PatchMapping("updateBook/{id}")
+    //e.g URL: http://localhost:8080/api/books/updateBook/1
+    public ResponseEntity<BookDTO> update(@PathVariable Long id,@RequestBody BookDTO bookDTO){
+        bookDTO.setId(id);
+        BookDTO updateBook = bookService.updateBook(bookDTO);
+        return new ResponseEntity<>(updateBook, HttpStatus.OK);
+    }
 }

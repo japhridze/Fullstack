@@ -64,6 +64,11 @@ public class BookServiceImpl implements BookService {
         return BookMapper.mapToBookDTO(savedBook);
     }
 
+    @Override
+    public void deleteBook(Long bookId) {
+        bookRepository.deleteById(bookId);
+    }
+
     private void updateBookEntityFromDTO(Book book, BookDTO bookDTO) {
         if (bookDTO.getTitle() !=null){
             book.setTitle(bookDTO.getTitle());

@@ -56,4 +56,12 @@ public class BookController {
         BookDTO updateBook = bookService.updateBook(bookDTO);
         return new ResponseEntity<>(updateBook, HttpStatus.OK);
     }
+
+    @DeleteMapping("deleteBook/{id}")
+    // e.g. URL: http://localhost:8080/api/books/deleteBooks/3
+    public ResponseEntity<String> deleteBook(@PathVariable Long id){
+        bookService.deleteBook(id);
+        return new ResponseEntity<>("Book successfully deleted.", HttpStatus.OK);
+
+    }
 }

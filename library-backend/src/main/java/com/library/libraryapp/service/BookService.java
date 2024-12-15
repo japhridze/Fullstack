@@ -1,7 +1,6 @@
 package com.library.libraryapp.service;
 
 import com.library.libraryapp.dto.BookDTO;
-import com.library.libraryapp.entity.Book;
 
 import java.util.List;
 
@@ -20,6 +19,9 @@ public interface BookService {
 
    void deleteBook(Long bookId);
 
+   List<BookDTO> findByTitle(String title);
+
+   List<BookDTO> findByTitleAndAuthor(String title, String author);
 
 
  }

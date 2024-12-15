@@ -5,7 +5,6 @@ import com.library.libraryapp.mapper.BookMapper;
 import com.library.libraryapp.repository.BookRepository;
 import com.library.libraryapp.service.BookService;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -68,6 +67,23 @@ public class BookServiceImpl implements BookService {
     public void deleteBook(Long bookId) {
         bookRepository.deleteById(bookId);
     }
+
+    @Override
+    public List<BookDTO> findByTitle(String title) {
+       List<Book> books = bookRepository.findByTitleContainingIgnoreCase(title);
+        return books.stream()
+                .map(BookMapper::mapToBookDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<BookDTO> findByTitleAndAuthor(String title, String author) {
+        List<Book> books = bookRepository.findByTitleAndAuthorContainingIgnoreCase(title, author);
+        return books.stream()
+                .map(BookMapper::mapToBookDTO)
+                .collect(Collectors.toList());
+    }
+
 
     private void updateBookEntityFromDTO(Book book, BookDTO bookDTO) {
         if (bookDTO.getTitle() !=null){

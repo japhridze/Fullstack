@@ -64,4 +64,19 @@ public class BookController {
         return new ResponseEntity<>("Book successfully deleted.", HttpStatus.OK);
 
     }
+
+    @GetMapping("search-title")
+    // e.g. URL: http:localhost:8080/api/books/search-title?title=Lord of the Rings
+    public ResponseEntity<List<BookDTO>> searchBooksByTitle(@RequestParam String title){
+       List<BookDTO> books = bookService.findByTitle(title);
+       return new ResponseEntity<>(books, HttpStatus.OK);
+    }
+
+    @GetMapping("search-title-author")
+    // e.g. URL: http:localhost:8080/api/books/search-title-author?title=Lord?author=tolk
+    public ResponseEntity<List<BookDTO>> searchBooksByTitleAndAuthor(@RequestParam String title,
+                                                                     @RequestParam String author){
+        List<BookDTO> books = bookService.findByTitleAndAuthor(title, author);
+        return new ResponseEntity<>(books, HttpStatus.OK);
+    }
 }

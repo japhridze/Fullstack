@@ -78,7 +78,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public List<BookDTO> findByTitleAndAuthor(String title, String author) {
-        List<Book> books = bookRepository.findByTitleAndAuthorContainingIgnoreCase(title, author);
+        List<Book> books = bookRepository.findByTitleAndAuthor(title, author);
         return books.stream()
                 .map(BookMapper::mapToBookDTO)
                 .collect(Collectors.toList());

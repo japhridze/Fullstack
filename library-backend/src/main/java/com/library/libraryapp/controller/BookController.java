@@ -79,4 +79,16 @@ public class BookController {
         List<BookDTO> books = bookService.findByTitleAndAuthor(title, author);
         return new ResponseEntity<>(books, HttpStatus.OK);
     }
+
+    @GetMapping("search")
+    //e.g. URL: http://localhost:8080/api/books/search?title=lord&author=tolk
+    public ResponseEntity<List<BookDTO>> searchBooks(
+            @RequestParam (required = false) String title,
+            @RequestParam (required = false) String author,
+            @RequestParam(required = false)String isbn,
+            @RequestParam(required = false) String barcodeNumber) {
+        List<BookDTO> books = bookService.findBooksByCriteria(title,author, isbn, barcodeNumber);
+        return new ResponseEntity<>(books,HttpStatus.OK);
+
+    }
 }

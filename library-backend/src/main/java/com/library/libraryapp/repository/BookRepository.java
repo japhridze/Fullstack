@@ -23,6 +23,9 @@ public interface BookRepository extends JpaRepository<Book,Long> {
 
     List<Book> findByTitleAndAuthor(String title, String author);
 
+    // perform search by using criteriaBuilder and CriteriaQuery
+
+
 
 
 

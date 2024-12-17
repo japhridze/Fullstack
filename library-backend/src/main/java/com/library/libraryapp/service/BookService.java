@@ -24,4 +24,6 @@ public interface BookService {
    List<BookDTO> findByTitleAndAuthor(String title, String author);
 
 
+   List<BookDTO> findBooksByCriteria(String title, String author, String isbn, String barcodeNumber);
+
  }
